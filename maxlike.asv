@@ -1,0 +1,20 @@
+function res = maxlike(term, sender, location, option)
+
+text = {};
+
+    if(strcmp(option,'col'))
+        for i=1:size(location,1)
+            if (strcmp(location(i).sender, sender))
+                text = strcat(text, ' ' , location(i).content);
+            end
+        end
+
+      field = 'content';
+      value = text;
+      s = struct(field,value);
+     [arg,res] = N_t(s,term);
+   
+    end
+    
+     
+end
