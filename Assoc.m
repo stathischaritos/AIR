@@ -7,7 +7,7 @@ function a = Assoc(doc,ca)
 list = Recip(doc);
 a = 0;
 for i = 1 : size(list,1)
-    if(strcmp(ca,list(i))
+    if(strcmp(ca,list(i)))
         a = 1;
         return;
     end

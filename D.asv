@@ -1,7 +1,0 @@
-function dataset = D(ca,data)
-dataset = [];
-for i = 1:size(data,1)
-    if(Assoc(Data(i),ca) dataset = [dataset ; Data(i)];
-    end
-end
-end

@@ -1,4 +1,4 @@
-function [ret_str, rel_frec] = N_t (doc,term) 
+function [ret_str, all_words] = N_t (doc,term) 
 
 
 
@@ -31,12 +31,13 @@ for i = 1:numel(unique_words)
 end
 
 ret_str = 0;
+
 for i = 1:size(unique_words)
     if(strcmp(unique_words{i},term))
        ret_str = unique(freq(i));
     end
 end
-
+all_words = size(unique_words,1);
 rel_frec = ret_str / size(unique_words,1);
 else   
     display "Document empty";

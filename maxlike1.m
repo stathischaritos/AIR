@@ -1,26 +1,15 @@
-function res = maxlike1(term, sender, location, option)
+function p = maxlike1(term, sent)
 
-text = {''};
+countterm = 0;
+countwords = 0;
+for i = 1 : size(sent,1)
 
-    if(strcmp(option,'col'))
-        for i=1:size(location,1)
-            if (strcmp(location(i).sender, sender))
-                text = strcat(text, ' ' , location(i).content);
-            end
-        end
-        
-    else
-            
-          text = sender
-          field = 'content';
-          value = text{1}
-          s = struct(field,value);
-    end    
+    [countt , countw] = N_t(sent(i),term);
+    countterm = countterm + countt;
+    countwords = countwords + countw;
+end
     
+p = countterm/countwords;
 
-      [arg,res] = N_t(s,term);
     
-   
-    
-     
 end
