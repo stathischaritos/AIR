@@ -3,7 +3,7 @@ function [ret_str, all_words] = N_t (doc,term)
 
 
 words = {};
-results = {};
+
 
 if(~(strcmp(doc.content ,'')))
 words = textscan(doc.content,'%s','Delimiter',' \b\t"()[]-/\\,^.;:!?');
@@ -18,27 +18,20 @@ end
 %count frequency 
 unique_words = unique(words{1,1});
 
-freq = zeros(numel(unique_words), 1);
-
-for i = 1:numel(unique_words)
-    if max(unique_words{i} ~= ' ')
-        for j = 1:numel(words{1,1})
-            if strcmp(words{1,1}(j), unique_words{i})
-                freq(i) = freq(i) + 1;
-            end
-        end
-    end
+freq = 0;
+  
+for j = 1:numel(words{1,1})
+  if strcmp(words{1,1}(j), term)
+     freq = freq + 1;
+  end
+      
 end
 
-ret_str = 0;
+ret_str = freq;
 
-for i = 1:size(unique_words)
-    if(strcmp(unique_words{i},term))
-       ret_str = unique(freq(i));
-    end
-end
 all_words = size(unique_words,1);
-rel_frec = ret_str / size(unique_words,1);
+%rel_frec = ret_str / size(unique_words,1);
 else   
-    display "Document empty";
+    all_words =1;
+    ret_str = 0;
 end

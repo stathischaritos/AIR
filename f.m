@@ -2,7 +2,7 @@ function result = f(doc,ca,mode,user)
 sumo = 0;
 data = user.sent;
 cand = user.book;
-
+if Assoc(doc,ca)==1
 if(strcmp(mode,'DC'))
     for i = 1 : size(data,1)
         if(data(i).id ~= doc.id)
@@ -17,6 +17,9 @@ elseif(strcmp(mode,'UC'))
         end
         r = Assoc(doc,ca)/sumo;
     end 
+end
+
+else r = 0;
 end
 result = r;
 
